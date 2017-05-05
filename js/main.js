@@ -15,3 +15,6 @@ var db = fdb.db("資料庫");
 MoneyCollection = db.collection('moneys');
 MoneyCollection.load()
 
+
+var firebaseAuth = firebase.auth();
+
