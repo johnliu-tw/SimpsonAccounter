@@ -32,7 +32,7 @@
     <label for="number">金額</label>
     <input type="text" class="form-control" id="number" placeholder="70">
   </div>
-  <a class="btn btn-primary btn-lg btn-block">Submit</a>
+  <a class="btn btn-primary btn-lg btn-block" onclick="additem()">Submit</a>
  </div>
 </div>
 
@@ -44,7 +44,13 @@ function additem(){
         name: $("input#name").val(),
         number: $("input#number").val()
       });
-    MoneyCollection.save()
+    MoneyCollection.save();
+    $("input#date").val("");
+    $("input#type").val("");
+    $("input#name").val("");
+    $("input#number").val("");
     alert(JSON.stringify(ArticleCollection.find()));
+    alert("儲存成功")
+    
  }  
 </script>
