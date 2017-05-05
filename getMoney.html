@@ -37,5 +37,14 @@
 </div>
 
 <script>
-w3IncludeHTML();
+function additem(){
+    MoneyCollection.insert({
+        date: $("input#date").val(),
+        type: $("input#type").val(),
+        name: $("input#name").val(),
+        number: $("input#number").val()
+      });
+    MoneyCollection.save()
+    alert(JSON.stringify(ArticleCollection.find()));
+ }  
 </script>
