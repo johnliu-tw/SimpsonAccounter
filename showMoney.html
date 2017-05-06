@@ -20,7 +20,7 @@
 <script>
   window.onload = function(){
       console.log("Modo")
-      cnosole.log(MoneyCollection.find().length);
+      console.log(MoneyCollection.find().length);
       for(var i=0;i<MoneyCollection.find().length;i++){
         var commentdata="<tr><td>"+MoneyCollection.find()[i].name+"</td><td>"+MoneyCollection.find()[i].type+"</td><td>"+MoneyCollection.find()[i].number+"</td><</tr>"
         $("table#commenttable tbody").append(commentdata);
