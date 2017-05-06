@@ -1,1 +1,27 @@
-
+<head>
+    <title>算錢森</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fdb-all.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- my import -->
+    <link href="css/main.css">
+    <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+  <table id="commenttable">
+    <tbody>
+    </tbody>
+  </table>
+</body>
+<script>
+  window.onload = function(){
+      for(var i=0;i<MoneyCollection.find().length;i++){
+        var commentdata="<tr><td>"+MoneyCollection.find()[i].name+"</td><td>"+ArticleCollection.find()[i].type+"</td><td>"+ArticleCollection.find()[i].number+"</td><td>"+categoryName+"</td></tr>"
+        $("table#commenttable tbody").append(commentdata);
+      };
+    };     
+</script>
