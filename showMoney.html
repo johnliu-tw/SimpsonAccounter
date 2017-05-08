@@ -4,24 +4,28 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/fdb-all.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script src="js/awesomechart.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- my import -->
     <link href="css/main.css">
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>         
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta charset="UTF-8">
 </head>
-<body>
-  <table id="commenttable">
+<body>            
+  <canvas id="canvas1" width="350px" height="350px">
+  </canvas>
+  <table id="commenttable" class='table table-hover'>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Item type</th>
+        <th>Item price</th>
+        <th>Item date</th>
+      </tr>
+    </thead>
     <tbody>
     </tbody>
   </table>
 </body>
-<script>
-  MoneyCollection.load(function(){
-      for(var i=0;i<MoneyCollection.find().length;i++){
-        var commentdata="<tr><td>"+MoneyCollection.find()[i].name+"</td><td>"+MoneyCollection.find()[i].type+"</td><td>"+MoneyCollection.find()[i].number+"</td><</tr>"
-        $("table#commenttable tbody").append(commentdata);
-      };
-    });     
-</script>
+<script src="js/showData.js"></script>
