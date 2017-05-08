@@ -1,0 +1,56 @@
+<head>
+    <title>算錢森</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fdb-all.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- my import -->
+    <link href="css/main.css">
+    <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+</head>
+
+<div class="container">
+ <div class="col-md-12" style="text-align:center;">
+  <div>
+    <h1 style="margin-bottom:20px;">新增帳目</h1>  
+  </div>
+  <div class="form-group">
+    <label for="date">日期</label>
+    <input type="date" class="form-control" id="date" placeholder="日期">
+  </div>
+  <div class="form-group">
+    <label for="type">類別</label>
+    <input type="text" class="form-control" id="type">
+  </div>
+  <div class="form-group">
+    <label for="name">項目</label>
+    <input type="text" class="form-control" id="name" placeholder="便當">
+  </div>
+  <div class="form-group">
+    <label for="number">金額</label>
+    <input type="text" class="form-control" id="number" placeholder="70">
+  </div>
+  <a class="btn btn-primary btn-lg btn-block" onclick="additem()">Submit</a>
+ </div>
+</div>
+
+<script>
+function additem(){
+    MoneyCollection.insert({
+        date: $("input#date").val(),
+        type: $("input#type").val(),
+        name: $("input#name").val(),
+        number: $("input#number").val()
+      });
+    MoneyCollection.save();
+    $("input#date").val("");
+    $("input#type").val("");
+    $("input#name").val("");
+    $("input#number").val("");
+    alert("儲存成功")
+    
+ }  
+</script>
