@@ -1,0 +1,75 @@
+<head>
+    <title>算錢森</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fdb-all.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- my import -->
+    <link href="css/main.css">
+    <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>支出查詢</h1>
+    <div class="radio">
+        <label><input type="radio" name="time" id="thisMonth">這個月</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="time" id="selectMonth">指定日期</label>
+    </div>
+    <input type="date" id="startDate"> - <input type="date" id="endDate">
+    <a class="btn btn-primary btn-lg" onclick="searchDetail()">搜尋</a>
+  <table id="commenttable" class='table table-hover'>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Item type</th>
+        <th>Item price</th>
+        <th>Item date</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>  
+  <script>
+
+      function searchDetail(){
+        var query;
+        if($("input#thisMonth:checked").length!=0){
+            var date = new Date();
+            var month = date.getMonth()+1
+            var nextmonth = month+1
+            var year = date.getFullYear() 
+            if(month<10){
+                month = "0"+month
+            }
+            if(nextmonth<10){
+                nextmonth = "0"+nextmonth
+            }
+            query={
+                date: {
+                    "$gt": year+"-"+month+"-0"+1,
+                    "$lt": year+"-"+nextmonth+"-0"+1
+                }
+            }
+        }
+        else if($("input#selectMonth:checked").length!=0){
+             query={
+                date: {
+                    "$gt": $("input#startDate").val(),
+                    "$lt": $("input#endDate").val()
+                }
+            }
+
+        }
+        var result = MoneyCollection.find(query)
+        for(var i=0;i<result.length;i++){
+            var commentdata="<tr><td>"+result[i].name+"</td><td>"+result[i].type+"</td><td>"+result[i].number+"</td><td>"+result[i].date+"</tr>"
+            $("table#commenttable tbody").append(commentdata);
+        }
+
+      }
+  </script>
+</body>
