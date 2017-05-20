@@ -17,4 +17,23 @@
       John Liu
   </author>
 
+  <gap:plugin name="org.apache.cordova.network-information" />
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/media"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
+    <feature name="InAppBrowser">
+    <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
+    </feature>
+
+    <feature name="NetworkStatus">
+      <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+
+    <access origin="*" subdomains="true" />
+
+    <allow-navigation href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
 </widget>
