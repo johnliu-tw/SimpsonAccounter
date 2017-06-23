@@ -35,16 +35,43 @@
         }
       };
 //畫圖
-      drawMyChart(this.sum)
+      drawMyChart(this.sum,"default")
     });  
 
 
-  function drawMyChart(sum){
+  function drawMyChart(sum,type){
+    document.getElementById("canvas1").getContext("2d").clearRect(0,0,350,350);
     if(!!document.createElement('canvas').getContext){ 
       var mychart = new AwesomeChart('canvas1');
       mychart.title = "消費總覽";
       mychart.data = [sum[0], sum[1], sum[2], sum[3], sum[4], sum[5]];
       mychart.labels = ["食", "飲", "行", "育", "樂","其他"];
+      mychart.chartType = type;
       mychart.draw();
     }
+  }
+
+  function changeChart(){
+    var random = Math.random()*6
+    var type = ""
+    if(random>=0&&random<=1){
+      type = "default"
+    }
+    else if(random>=1&&random<=2){
+      type = "horizontal bars"
+    }
+    else if(random>=2&&random<=3){
+      type = "pareto"
+    }
+    else if(random>=3&&random<=4){
+      type = "pie"
+    }
+    else if(random>=4&&random<=5){
+      type = "exploded pie"
+    }
+    else if(random>=5&&random<=6){
+      type = "doughnut"
+    }
+    drawMyChart(sum,type);
+
   }
